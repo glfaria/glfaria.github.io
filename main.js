@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
     menuToggle.addEventListener('click', () => {
         menu.style.opacity = 1;
         menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
-
     });
 
     h1.addEventListener('click', () => {
@@ -59,25 +58,25 @@ document.addEventListener("DOMContentLoaded", () => {
     let isScrolling = false;
 
     m1.addEventListener('click', () => {
-    sections[currentSectionIndex].classList.remove('active');
+        sections[currentSectionIndex].classList.remove('active');
         currentSectionIndex = 0; 
         changeSection(1);
         fade();
     });
     m2.addEventListener('click', () => {
-    sections[currentSectionIndex].classList.remove('active');
+        sections[currentSectionIndex].classList.remove('active');
         currentSectionIndex = 1; 
         changeSection(1);
         fade();
     });
     m3.addEventListener('click', () => {
-    sections[currentSectionIndex].classList.remove('active');
+        sections[currentSectionIndex].classList.remove('active');
         currentSectionIndex = 2; 
         changeSection(1);
         fade();
     });
     m4.addEventListener('click', () => {
-    sections[currentSectionIndex].classList.remove('active');
+        sections[currentSectionIndex].classList.remove('active');
         currentSectionIndex = 3; 
         changeSection(1);
         fade();
@@ -88,15 +87,15 @@ document.addEventListener("DOMContentLoaded", () => {
             var i = 10;
             menu.style.opacity = 1;
             var k = window.setInterval(function() {
-            if (i <= 0) {
-                clearInterval(k);
+                if (i <= 0) {
+                    clearInterval(k);
                 } else {
                     menu.style.opacity = i / 10;
                     i=i-0.2;
-                    }
+                }
             }, 10);
             setTimeout(() => {
-            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+                menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
             }, 300);
         }       
     }
@@ -106,13 +105,13 @@ document.addEventListener("DOMContentLoaded", () => {
         isScrolling = true;
 
         const nextSectionIndex = Math.min(
-        Math.max(currentSectionIndex + delta, 0),
-        sections.length - 1
+            Math.max(currentSectionIndex + delta, 0),
+            sections.length - 1
         );
 
         if (nextSectionIndex === currentSectionIndex) {
-        isScrolling = false;
-        return;
+            isScrolling = false;
+            return;
         }
 
         sections[currentSectionIndex].classList.remove('active');
@@ -121,15 +120,32 @@ document.addEventListener("DOMContentLoaded", () => {
         currentSectionIndex = nextSectionIndex;
 
         setTimeout(() => {
-        isScrolling = false;
+            isScrolling = false;
         }, 500); 
-    }   
+    }
 
+    let touchStartY = 0; 
 
     window.addEventListener('wheel', (e) => {
         const delta = e.deltaY > 0 ? 1 : -1;
         changeSection(delta);
     });
+
+    window.addEventListener('touchstart', (e) => {
+        touchStartY = e.touches[0].clientY;
+    });
+
+    window.addEventListener('touchmove', (e) => {
+        e.preventDefault();
+
+        const touchEndY = e.touches[0].clientY;
+        const delta = touchStartY - touchEndY;
+
+        if (Math.abs(delta) > 50) {
+            changeSection(delta > 0 ? 1 : -1); 
+            touchStartY = touchEndY; 
+        }
+    }, { passive: false });
 
     let mouseX = 0;
     let mouseY = 0;
@@ -148,7 +164,7 @@ document.addEventListener("DOMContentLoaded", () => {
             mouseX = (event.clientX / window.innerWidth) * 2 - 1;
             mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
 
-        image.style.transform = `rotateY(${mouseX * 10}deg) rotateX(${mouseY * 10}deg)`;
+            image.style.transform = `rotateY(${mouseX * 10}deg) rotateX(${mouseY * 10}deg)`;
         }
     });
 
