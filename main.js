@@ -50,6 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     startShuffling(() => {
         h1.addEventListener("mouseover", () => startShuffling());
+        h1.addEventListener("click", () => startShuffling());
     });
 
     const sections = document.querySelectorAll('section');
@@ -146,28 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
             touchStartY = touchEndY; 
         }
     }, { passive: false });
-
-    let mouseX = 0;
-    let mouseY = 0;
-    let isMouseOverImage = false;
-
-    image.addEventListener('mouseenter', () => {
-        isMouseOverImage = true;
-    });
-
-    image.addEventListener('mouseleave', () => {
-        isMouseOverImage = false;
-    });
-
-    window.addEventListener('mousemove', (event) => {
-        if (isMouseOverImage) {
-            mouseX = (event.clientX / window.innerWidth) * 2 - 1;
-            mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
-
-            image.style.transform = `rotateY(${mouseX * 10}deg) rotateX(${mouseY * 10}deg)`;
-        }
-    });
-
+    
     sections.forEach((section, index) => {
         if (index !== 0) {
             section.classList.remove('active');

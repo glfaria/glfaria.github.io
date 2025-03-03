@@ -158,6 +158,8 @@ a {
         text-align: center;
         padding-top: 10px;
         z-index: 2000;
+        -webkit-tap-highlight-color: transparent;
+        -webkit-tap-highlight-color: black;
     }
 
     .menu-icon {
