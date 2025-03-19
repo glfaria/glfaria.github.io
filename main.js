@@ -153,4 +153,13 @@ document.addEventListener("DOMContentLoaded", () => {
             section.classList.remove('active');
         }
     });
+
+    window.addEventListener('keydown', (e) => {
+        if (e.key === "ArrowDown") {
+            changeSection(1); 
+        } else if (e.key === "ArrowUp") {
+            changeSection(-1);
+        }
+    });
+    
 });

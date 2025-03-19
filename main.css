@@ -1,4 +1,6 @@
 body, html {
+    overflow: auto;
+    scroll-behavior: smooth;
     width: 100vw;
     height: 100vh;
     margin: 0;
@@ -85,11 +87,8 @@ nav {
     z-index: 1000;
 }
 
-.menu-icon {
+.menu-icon{
     display: none;
-    font-size: 25px;
-    cursor: pointer;
-    color: white;
 }
 
 .menu {
@@ -98,16 +97,6 @@ nav {
     margin: 0;
     display: none; 
     cursor:pointer;
-}
-
-.menu li {
-    margin: 10px 0;
-    display: block;
-    padding: 10px 15px;
-    background: #1a1652;
-    color: white;
-    text-decoration: none;
-    border-radius: 100px;
 }
 
 .skills-list, .languages-list {
@@ -124,6 +113,10 @@ nav {
     text-align: left;
 }
 
+.skills-list li, .languages-list li {
+    margin-bottom: 4px; 
+}
+
 a {
     color: white;
 }
@@ -135,13 +128,13 @@ a {
     }
 
     #tl {
-        font-size: 8vw;
+        font-size: 210%;
         top: 0vh;
-        left: 5vw;
+        left: 5%;
     }
 
     footer {
-        font-size: 4vw;
+        font-size: 100%;
     }
 
     nav {
@@ -164,9 +157,22 @@ a {
     .menu-icon {
         display: block;
         position: fixed;
-        font-size: 8vw;
-        top: 5vw;
-        right: 6vw;
+        font-size: 200%;
+        top: 23px;
+        right: 6%;
+        cursor: pointer;
+        color: white;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .menu li {
+        margin: 10px 0;
+        display: block;
+        padding: 2.5% 3%;
+        background: #1a1652;
+        color: white;
+        text-decoration: none;
+        border-radius: 100px;
     }
 
     .wrapper{
@@ -183,7 +189,7 @@ a {
     }
 
     #lg {
-        font-size: 4vw;
+        font-size: 100%;
     }
 
     .skills-list, .languages-list {
@@ -194,15 +200,11 @@ a {
         max-width: 100%;
     }
 
-    .skills-list ul, .languages-list ul {
-        width: 70%;
-        text-align: left;
-    }
 }
 
 @media (min-width: 769px) {
     #tl {
-        font-size: 2.5vw;
+        font-size: 200%;
         top: 0vh;
         left: 2vw;
     }
@@ -210,16 +212,8 @@ a {
         font-size: 1.5vh;
     }
     
-    .menu {
-        opacity: 0; /*I need to fix the menu for larger screens...*/
-        display: flex;
-        flex-direction: column;
-        position: fixed;
-        right: 10px;
-        top: 50%;
-        transform: translateY(-50%);
-        z-index: 100;
-        text-align: center;
+    .menu, .menu-icon, .menu li {
+        display: none;
     }
 
     .wrapper{
@@ -227,10 +221,11 @@ a {
         width: 80%;
         position: relative;
         left: 10%;
-        font-size: 1.5vw;
+        font-size: 125%;
     }
-    .menu li {
-        margin: 15px 0;
+    
+    .skills-list, .languages-list {
+        font-size: 90%;
     }
 
 }
